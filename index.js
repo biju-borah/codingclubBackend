@@ -1,5 +1,5 @@
-import express from 'express'
-import apiRoute from './routes/api'
+var express = require('express')
+var apiRoute = require('./routes/api')
 
 const app = express()
 const port = 3000

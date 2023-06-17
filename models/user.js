@@ -14,14 +14,8 @@ const User = mongoose.model(
     confirmationCode: {
       type: String,
       unique: true
-    },
-    roles: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
-      }
-    ]
+    }
   })
 );
 
-module.exports = User;
+export default User
