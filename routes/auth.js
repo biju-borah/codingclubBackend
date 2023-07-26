@@ -1,12 +1,11 @@
 const express = require('express')
-const signup = require('../controller/auth')
-const login = require('../controller/auth')
-const verifyUser = require('../controller/auth')
+const { signup, verifyUser, login } = require('../controller/auth')
+
 
 const router = express.Router()
 
-app.get("/api/auth/signup", signup)
-app.get("/api/auth/login", login)
-app.get("/api/auth/confirm/:confirmationCode", verifyUser)
+router.get("/api/auth/signup", signup)
+router.get("/api/auth/login", login)
+router.get("/api/auth/confirm/:confirmationCode", verifyUser)
 
-export default router
+module.exports = router 

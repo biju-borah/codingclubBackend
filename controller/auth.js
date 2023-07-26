@@ -4,7 +4,7 @@ const User = require("../models/user");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
-export const signup = (req, res) => {
+const signup = (req, res) => {
 
     const token = jwt.sign({ email: req.body.email }, config.secret)
 
@@ -32,7 +32,7 @@ export const signup = (req, res) => {
     });
 }
 
-export const verifyUser = (req, res, next) => {
+const verifyUser = (req, res, next) => {
     User.findOne({
         confirmationCode: req.params.confirmationCode,
     })
@@ -52,7 +52,7 @@ export const verifyUser = (req, res, next) => {
         .catch((e) => console.log("error", e));
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
 
     const user = await User.findOne({ email: req.body.email })
     if (!user) return res.status(400).send('Incorrect Email-ID')
@@ -62,3 +62,5 @@ export const login = async (req, res) => {
 
     res.header("auth-token", user.confirmationCode).send(token)
 }
+
+module.exports = { signup, verifyUser, login }
